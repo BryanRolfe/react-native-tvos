@@ -36,6 +36,7 @@ Pod::Spec.new do |s|
   s.tvos.exclude_files     = "Fabric/**/RCTPullToRefreshViewComponentView*",
                              "Fabric/**/RCTSwitchComponentView*",
                              "Fabric/**/RCTSliderComponentView*" 
+  s.ios.exclude_files      = "Fabric/**/RCTTVFocusGuideViewComponentView*"
   s.compiler_flags         = folly_compiler_flags + ' ' + boost_compiler_flags
   s.header_dir             = "React"
   s.framework              = "JavaScriptCore"

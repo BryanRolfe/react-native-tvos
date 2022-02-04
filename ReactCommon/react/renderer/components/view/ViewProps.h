@@ -68,6 +68,7 @@ class ViewProps : public YogaStylableProps, public AccessibilityProps {
 #if TARGET_OS_TV
   bool isTVSelectable{false};
   TVParallaxProperties tvParallaxProperties;
+  std::vector<int> destinationTags; // Used by TVFocusGuideView
 #endif
 
   Float elevation{}; /* Android-only */

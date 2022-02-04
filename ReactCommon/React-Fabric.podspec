@@ -211,6 +211,15 @@ Pod::Spec.new do |s|
       sss.pod_target_xcconfig  = { "HEADER_SEARCH_PATHS" => "\"$(PODS_TARGET_SRCROOT)/ReactCommon\" \"$(PODS_ROOT)/RCT-Folly\"" }
     end
 
+    ss.subspec "tvfocusguide" do |sss|
+      sss.dependency             folly_dep_name, folly_version
+      sss.compiler_flags       = folly_compiler_flags
+      sss.tvos.source_files         = "react/renderer/components/tvfocusguide/**/*.{m,mm,cpp,h}"
+      sss.exclude_files        = "react/renderer/components/tvfocusguide/tests"
+      sss.tvos.header_dir           = "react/renderer/components/tvfocusguide"
+      sss.pod_target_xcconfig  = { "HEADER_SEARCH_PATHS" => "\"$(PODS_TARGET_SRCROOT)/ReactCommon\" \"$(PODS_ROOT)/RCT-Folly\"" }
+    end
+
     ss.subspec "unimplementedview" do |sss|
       sss.dependency             folly_dep_name, folly_version
       sss.compiler_flags       = folly_compiler_flags

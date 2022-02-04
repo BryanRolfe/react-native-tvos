@@ -37,6 +37,12 @@ ViewProps::ViewProps(
           "tvParallaxProperties",
           sourceProps.tvParallaxProperties,
           {})),
+      destinationTags(convertRawProp(
+          context,
+          rawProps,
+          "destinationTags",
+          sourceProps.destinationTags,
+          {})),
 #endif
       opacity(convertRawProp(
           context,

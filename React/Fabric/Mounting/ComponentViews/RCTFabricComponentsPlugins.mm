@@ -36,6 +36,9 @@ Class<RCTComponentViewProtocol> RCTFabricComponentsProvider(const char *name) {
 #endif
     {"View", RCTViewCls},
     {"Image", RCTImageCls},
+#if TARGET_OS_TV
+    {"TVFocusGuideView", RCTTVFocusGuideViewCls},
+#endif
   };
 
   auto p = sFabricComponentsClassMap.find(name);

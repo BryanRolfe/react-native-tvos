@@ -48,6 +48,10 @@ Class<RCTComponentViewProtocol> RCTInputAccessoryCls(void) __attribute__((used))
 Class<RCTComponentViewProtocol> RCTViewCls(void) __attribute__((used));
 Class<RCTComponentViewProtocol> RCTImageCls(void) __attribute__((used));
 
+#if TARGET_OS_TV
+Class<RCTComponentViewProtocol> RCTTVFocusGuideViewCls(void) __attribute__((used));
+#endif
+
 #ifdef __cplusplus
 }
 #endif
