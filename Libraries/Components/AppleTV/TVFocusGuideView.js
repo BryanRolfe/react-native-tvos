@@ -23,25 +23,15 @@ type FocusGuideProps = $ReadOnly<{
   destinations: ?(Object[]),
 }>;
 
-class TVFocusGuideView extends React.Component<FocusGuideProps> {
-  _focusGuideRef: ?Object;
-  _destinationTags: ?(number[]);
+const TVFocusGuideView = (props: FocusGuideProps) => {
+  const [destinationTags, setDestinationTags] = React.useState([]);
 
-  componentDidUpdate() {
-    const destinations = this.props.destinations || [];
-    this._destinationTags = destinations.map(
-      c => ReactNative.findNodeHandle(c) || 0,
-    );
-    this._focusGuideRef &&
-      this._focusGuideRef.setNativeProps({
-        destinationTags: this._destinationTags,
-      });
-  }
-
-  render(): React.Node {
+  React.useEffect(() => {
+    setDestinationTags((props.destinations || []).map(c => ReactNative.findNodeHandle(c) || 0));
+  }, [props.destinations]);
     return (
       // Container view must have nonzero size
-      <ReactNative.View style={[{minHeight: 1, minWidth: 1}, this.props.style]}>
+      <ReactNative.View style={[{minHeight: 1, minWidth: 1}, props.style]}>
         {
           /**
            * The client specified layout(using 'style' prop) should be applied the container view ReactNative.View.
@@ -54,16 +44,14 @@ class TVFocusGuideView extends React.Component<FocusGuideProps> {
         }
         {Platform.isTVOS ? (
           <RNFocusGuide
-            style={[this.props.style, styles.focusGuideLayout]}
-            ref={ref => (this._focusGuideRef = ref)}
-            destinationTags={this._destinationTags}>
-            {this.props.children}
+            style={[props.style, styles.focusGuideLayout]}
+            destinationTags={destinationTags}>
+            {props.children}
           </RNFocusGuide>
         ) : (
-          this.props.children
+          props.children
         )}
       </ReactNative.View>)
-  }
 }
 
 const styles = ReactNative.StyleSheet.create({
